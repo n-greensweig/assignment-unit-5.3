@@ -25,9 +25,22 @@ const showCollection = collection => {
   for (let album of collection) {
     console.log(`${album.title} by ${album.artist} published in ${album.yearPublished}`);
   }
-}
+};
 
 showCollection(myCollection);
+
+const findByArtist = (collection, artist) => {
+  let matches = [];
+  for (let album of collection) {
+    if (album.artist === artist) {
+      matches.push(album);
+    }
+  }
+  return matches;
+};
+
+let test = findByArtist(myCollection, 'The Beta Band');
+console.log(test);
 
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
 // as a lil' chunk of friendly code that you don't need to understand right now.
