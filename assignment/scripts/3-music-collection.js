@@ -21,6 +21,13 @@ addToCollection(myCollection, 'London Calling', 'The Clash', 1979);
 addToCollection(myCollection, `The Three E.P.'s`, 'The Beta Band', 1998);
 console.log(myCollection)
 
+const showCollection = collection => {
+  for (let album of collection) {
+    console.log(`${album.title} by ${album.artist} published in ${album.yearPublished}`);
+  }
+}
+
+showCollection(myCollection);
 
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
 // as a lil' chunk of friendly code that you don't need to understand right now.
