@@ -42,6 +42,31 @@ const findByArtist = (collection, artist) => {
 let test = findByArtist(myCollection, 'The Beta Band');
 console.log(test);
 
+function search(collection, searchCriteria) {
+  console.log(searchCriteria);
+  let matchingAlbums = [];
+
+  for (let album of collection) {
+    if (album.artist === searchCriteria.artist && album.yearPublished === searchCriteria.year) {
+      matchingAlbums.push(album);
+    }
+  }
+  if (searchCriteria === '' || (searchCriteria.artist === '' || searchCriteria.year === '')) {
+    return collection;
+  } else {
+    return matchingAlbums;
+  }
+}
+
+let criteria = {
+  artist: 'The Cats',
+  year: 1969
+};
+
+// Appears to be working but failing tests
+let tester = search(myCollection, criteria);
+console.log(tester);
+
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
 // as a lil' chunk of friendly code that you don't need to understand right now.
 // (It's used for automated testing.)
