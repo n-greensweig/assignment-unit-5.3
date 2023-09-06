@@ -1,6 +1,6 @@
 console.log('***** Music Collection *****')
 // Safe Zone -- Write code below this line
-
+let myCollection = [];
 
 
 
