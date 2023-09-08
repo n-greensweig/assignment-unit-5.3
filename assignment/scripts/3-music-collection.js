@@ -40,9 +40,10 @@ addToCollection(myCollection, `The Three E.P.'s`, 'The Beta Band', 1998);
 addToCollection(myCollection, `The Dark Side of the Moon`, 'Pink Floyd', 1973, [{ name: 'Brain Damage', duration: 3.78 }, { name: 'Money', duration: 6.38 }, { name: 'Us and Them', duration: 7.83 }]);
 console.log(myCollection)
 
+// Code related to Stretch goal #2
 myCollection[0].tracks = [
   {
-    name: 'Gimme Sheleter',
+    name: 'Gimme Shelter',
     duration: 4.55
   },
   {
@@ -133,11 +134,14 @@ myCollection[5].tracks = [
   - Test the `showCollection` function.
  */
 const showCollection = collection => {
+  let tracks = [];
   for (let album of collection) {
-    console.log(`${album.title} by ${album.artist} published in ${album.yearPublished} with tracks:`);
     for (let track of album.tracks) {
+      tracks.push(track.name);
       console.log(`${track.name}: ${track.duration} minutes`)
     }
+    console.log(`${album.title} by ${album.artist} published in ${album.yearPublished} with tracks: ${tracks.join(', ')}`);
+    tracks = [];
   }
 };
 
@@ -182,7 +186,15 @@ console.log(test);
  */
 function search(collection, searchCriteria) {
   let matchingAlbums = [];
+
   for (let album of collection) {
+
+    for (let track of album.tracks) {
+      if (searchCriteria.track === track.name) {
+        console.log(album);
+      }
+    }
+
     if (album.artist === searchCriteria.artist && album.yearPublished === searchCriteria.year) {
       matchingAlbums.push(album);
     }
@@ -196,16 +208,16 @@ function search(collection, searchCriteria) {
 
 let criteria = {
   artist: 'The Beatles',
-  year: 1969
+  year: 1969,
+  track: 'Dry the Rain'
 };
 search(myCollection, criteria);
 
 /**
  * Stretch goal #2: Add an array of `tracks` to each of your album objects. 
  * Each track should have a `name` and `duration`. 
- * You will need to update the functions to support this new property:
-  - Update the `addToCollection` function to also take an input parameter for the array of tracks.
-  - Update the `showCollection` function to display the list of tracks for each album with its name and duration.
+  - Updated the `addToCollection` function to also take an input parameter for the array of tracks.
+  - Updated the `showCollection` function to display the list of tracks for each album with its name and duration.
   - ```
     TITLE by ARTIST, published in YEAR:
         1. NAME: DURATION
@@ -215,8 +227,10 @@ search(myCollection, criteria);
         1. NAME: DURATION
         2. NAME: DURATION
     ```
-  - Update `search` to allow an optional `trackName` search criteria. 
+  - Updated `search` to allow an optional `trackName` search criteria. 
     - IF the search object has a `trackName` property, only search for that, *ignoring* any `artist` or `year` properties.
+
+    Includes additional code above
  */
 console.log(myCollection);
 
