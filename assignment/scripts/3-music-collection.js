@@ -83,7 +83,7 @@ myCollection[2].tracks = [
     duration: 4.03
   }
 ];
-myCollection[3].tracks = [
+myCollection[3].track = [
   {
     name: 'Please Please Me',
     duration: 3.03
